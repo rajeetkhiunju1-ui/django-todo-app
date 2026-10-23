@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+
+{% block start %}
+<form method="post" action="{% url 'add_task' %}">
+    {% csrf_token %}
+
+    <div>
+        Title:
+        <input type="text" name="title" required>
+    </div>
+
+    <div>
+        Description:
+        <textarea name="description"></textarea>
+    </div>
+
+    <div>
+        <label>
+            <input type="checkbox" name="is_completed">
+            Mark as completed
+        </label>
+    </div>
+
+    <button type="submit">Add Task</button>
+</form>
+{% endblock %}

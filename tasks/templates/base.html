@@ -1,0 +1,16 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+        <title>
+            Todo app
+        </title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome to my todo app</h1>
+            {% block start %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

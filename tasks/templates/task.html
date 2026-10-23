@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+{% block start %}
+
+<div class="container">
+    {% for t in task %}
+        <div class="task">
+            <h2>{{ t.title }}</h2>
+
+            <p>{{ t.description }}</p>
+
+            <form method="post" action="{% url 'complete_task' t.id %}">
+                {% csrf_token %}
+                {% if t.is_completed %}
+                    <span class="completed">Completed</span>
+                {% else %}
+                    <button type="submit">Mark Complete</button>
+                {% endif %}
+            </form>
+
+            <p>{{ t.created_at }}</p>
+
+            <a href="/task/{{ t.id }}/edit/">Edit</a>
+            <a href="/task/{{ t.id }}/delete/">Delete</a>
+        </div>
+    {% empty %}
+        <p>No tasks yet. Add your first task!</p>
+    {% endfor %}
+
+    <a href="/task/add/" class="add-task-btn">+Add task</a>
+</div>
+
+{% endblock %}
